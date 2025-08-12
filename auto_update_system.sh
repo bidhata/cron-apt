@@ -2,6 +2,7 @@
 
 # Auto Update System for Ubuntu/Debian Servers
 # This script automatically updates the system weekly and restarts services as needed
+# Created and Maintained by @bidhata
 
 set -euo pipefail
 
