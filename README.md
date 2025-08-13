@@ -26,14 +26,14 @@ A comprehensive, production-ready automatic update system that keeps your Ubuntu
 ### One-Line Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yourusername/auto-update/main/install-auto-update.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/bidhata/cron-apt/main/install-auto-update.sh | sudo bash
 ```
 
 ### Manual Installation
 
 1. Download the installation script:
 ```bash
-wget https://raw.githubusercontent.com/yourusername/auto-update/main/install-auto-update.sh
+wget https://raw.githubusercontent.com/bidhata/cron-apt/main/install-auto-update.sh
 ```
 
 2. Make it executable and run:
