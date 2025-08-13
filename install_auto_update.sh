@@ -312,6 +312,7 @@ echo "and set the EMAIL_RECIPIENT variable."
 echo ""
 echo "WARNING: The system may automatically restart services after updates."
 echo "For automatic reboots when required, uncomment the reboot line in the script."
+
 EOF
 
 # Make the installation script executable
