@@ -26,7 +26,7 @@ A comprehensive, production-ready automatic update system that keeps your Ubuntu
 ### One-Line Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bidhata/cron-apt/main/install-auto-update.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/bidhata/cron-apt/main/install_auto_update.sh | sudo bash
 ```
 
 ### Manual Installation
