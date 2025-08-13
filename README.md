@@ -33,7 +33,7 @@ curl -fsSL https://raw.githubusercontent.com/bidhata/cron-apt/main/install_auto_
 
 1. Download the installation script:
 ```bash
-wget https://raw.githubusercontent.com/bidhata/cron-apt/main/install-auto-update.sh
+wget https://raw.githubusercontent.com/bidhata/cron-apt/main/install_auto_update.sh
 ```
 
 2. Make it executable and run:
