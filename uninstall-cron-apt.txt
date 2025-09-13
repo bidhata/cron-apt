@@ -1,0 +1,61 @@
+#!/bin/bash
+# cron-apt Uninstaller
+# Created by Krishnendu Paul (@bidhata)
+
+set -euo pipefail
+
+echo "cron-apt Uninstaller"
+echo "===================="
+echo ""
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+    echo "ERROR: This script must be run as root"
+    echo "Usage: sudo /usr/local/bin/uninstall-cron-apt.sh"
+    exit 1
+fi
+
+echo "This will completely remove cron-apt from your system."
+echo ""
+read -p "Are you sure you want to continue? [y/N]: " -n 1 -r
+echo ""
+
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Uninstallation cancelled."
+    exit 0
+fi
+
+echo "Uninstalling cron-apt..."
+
+# Stop and disable services
+echo "  • Stopping services..."
+systemctl stop cron-apt.timer 2>/dev/null || true
+systemctl stop cron-apt.service 2>/dev/null || true
+systemctl disable cron-apt.timer 2>/dev/null || true
+
+# Remove systemd files
+echo "  • Removing systemd files..."
+rm -f /etc/systemd/system/cron-apt.service
+rm -f /etc/systemd/system/cron-apt.timer
+systemctl daemon-reload
+
+# Remove scripts and configuration
+echo "  • Removing scripts and configuration..."
+rm -f /usr/local/bin/cron-apt.sh
+rm -rf /etc/cron-apt
+
+# Remove logs and temporary files
+echo "  • Removing logs..."
+rm -f /var/log/cron-apt.log*
+rm -f /var/run/cron-apt.lock
+rm -f /etc/logrotate.d/cron-apt
+
+# Remove this uninstaller
+rm -f /usr/local/bin/uninstall-cron-apt.sh
+
+echo ""
+echo "✓ cron-apt has been completely removed from your system."
+echo ""
+echo "Note: The packages 'needrestart' and 'mailutils' were not removed"
+echo "as they may be used by other applications."
+echo ""

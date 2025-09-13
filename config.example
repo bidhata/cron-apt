@@ -1,0 +1,178 @@
+# cron-apt Configuration File
+# Copy this to /etc/cron-apt/config and modify as needed
+# File: /etc/cron-apt/config.example
+
+# ==============================================
+# EMAIL NOTIFICATIONS
+# ==============================================
+
+# Email notifications (optional)
+# Uncomment and set your email address to receive notifications
+# EMAIL_RECIPIENT="admin@example.com"
+
+# ==============================================
+# LOGGING CONFIGURATION
+# ==============================================
+
+# Maximum log file size before automatic rotation
+# Supported formats: 10M, 50M, 100M, 1G
+# MAX_LOG_SIZE="10M"
+
+# Enable verbose logging (true/false)
+# When enabled, provides more detailed output in logs
+# VERBOSE_LOGGING="false"
+
+# ==============================================
+# SERVICE MANAGEMENT
+# ==============================================
+
+# Additional services to restart (space-separated)
+# These services will be restarted in addition to the default ones
+# CUSTOM_SERVICES="your-service1 your-service2 custom-app"
+
+# Services to exclude from restart (space-separated)
+# Use this to prevent certain services from being restarted
+# EXCLUDE_SERVICES="mysql postgresql"
+
+# ==============================================
+# PACKAGE MANAGEMENT
+# ==============================================
+
+# Skip certain package upgrades (space-separated package names)
+# Use this to exclude specific packages from automatic updates
+# EXCLUDE_PACKAGES="linux-image-* nvidia-* docker-ce"
+
+# Enable automatic cleanup of orphaned packages (true/false)
+# When enabled, runs 'apt autoremove' after updates
+# AUTO_CLEANUP="true"
+
+# ==============================================
+# SYSTEM BEHAVIOR
+# ==============================================
+
+# Reboot automatically if required (DANGEROUS - use with caution)
+# When enabled, system will automatically reboot if required after updates
+# Only enable this in environments where automatic reboots are acceptable
+# AUTO_REBOOT="false"
+
+# Maximum system load before aborting updates
+# Updates will be skipped if system load average is above this value
+# MAX_LOAD_AVERAGE="5.0"
+
+# Minimum free disk space required (in MB) before updates
+# Updates will be aborted if less than this amount of space is available
+# MIN_FREE_SPACE_MB="2048"
+
+# ==============================================
+# NETWORK CONFIGURATION
+# ==============================================
+
+# Network timeout for apt operations (in seconds)
+# Adjust this if you have slow network connections
+# NETWORK_TIMEOUT="300"
+
+# Maximum retry attempts for failed operations
+# MAX_RETRY_ATTEMPTS="3"
+
+# Delay between retry attempts (in seconds)
+# RETRY_DELAY="30"
+
+# ==============================================
+# SECURITY SETTINGS
+# ==============================================
+
+# Enable strict SSL certificate checking (true/false)
+# When enabled, APT will strictly verify SSL certificates
+# STRICT_SSL="true"
+
+# Allow only signed packages (true/false)
+# When enabled, only packages with valid signatures will be installed
+# REQUIRE_SIGNED_PACKAGES="true"
+
+# ==============================================
+# NOTIFICATION SETTINGS
+# ==============================================
+
+# Notification level (error|warning|info|all)
+# Controls which events trigger email notifications
+# NOTIFICATION_LEVEL="error"
+
+# Include system information in notifications (true/false)
+# When enabled, notifications will include system details
+# INCLUDE_SYSTEM_INFO="true"
+
+# ==============================================
+# ADVANCED OPTIONS
+# ==============================================
+
+# Custom APT options
+# Additional options to pass to apt commands
+# APT_OPTIONS="--allow-downgrades --allow-remove-essential"
+
+# Custom pre-update script
+# Script to run before updates (must be executable)
+# PRE_UPDATE_SCRIPT="/etc/cron-apt/pre-update.sh"
+
+# Custom post-update script  
+# Script to run after updates (must be executable)
+# POST_UPDATE_SCRIPT="/etc/cron-apt/post-update.sh"
+
+# Update source lists before package updates (true/false)
+# When enabled, will run 'apt update' before checking for upgrades
+# UPDATE_SOURCES="true"
+
+# Perform distribution upgrade (true/false)
+# When enabled, will run 'apt dist-upgrade' in addition to 'apt upgrade'
+# DIST_UPGRADE="true"
+
+# ==============================================
+# MONITORING AND METRICS
+# ==============================================
+
+# Enable metrics collection (true/false)
+# When enabled, collects basic metrics about update operations
+# ENABLE_METRICS="false"
+
+# Metrics output file
+# File where metrics will be written (useful for monitoring systems)
+# METRICS_FILE="/var/log/cron-apt-metrics.log"
+
+# ==============================================
+# EXAMPLE CONFIGURATIONS
+# ==============================================
+
+# Example 1: Basic email notifications
+# EMAIL_RECIPIENT="sysadmin@company.com"
+# NOTIFICATION_LEVEL="warning"
+
+# Example 2: Conservative server (no auto-reboot, exclude kernel updates)
+# EXCLUDE_PACKAGES="linux-image-* linux-headers-*"
+# AUTO_REBOOT="false"
+# MAX_LOAD_AVERAGE="2.0"
+
+# Example 3: Aggressive updates (auto-reboot enabled)
+# AUTO_REBOOT="true"
+# AUTO_CLEANUP="true"
+# DIST_UPGRADE="true"
+
+# Example 4: High-traffic server (conservative approach)
+# MAX_LOAD_AVERAGE="1.0"
+# MIN_FREE_SPACE_MB="5120"
+# EXCLUDE_SERVICES="nginx apache2 mysql"
+
+# Example 5: Development server (verbose logging)
+# VERBOSE_LOGGING="true"
+# ENABLE_METRICS="true"
+# INCLUDE_SYSTEM_INFO="true"
+
+# ==============================================
+# NOTES
+# ==============================================
+
+# 1. After modifying this file, copy it to /etc/cron-apt/config
+# 2. Ensure the config file has proper permissions (644 or less restrictive)
+# 3. Test your configuration by running: sudo /usr/local/bin/cron-apt.sh
+# 4. Check logs for any configuration errors: tail -f /var/log/cron-apt.log
+# 5. Use 'systemctl list-timers cron-apt.timer' to check the schedule
+
+# For more information, visit: https://github.com/bidhata/cron-apt
