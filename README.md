@@ -57,15 +57,6 @@
 ```
 🚀 Get Started
 ```
-
-### Quick Install
-
-Run the following command as root to install `cron-apt`:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/bidhata/cron-apt/main/install_cron_apt.sh | sudo bash
-```
-
 ### Manual Installation
 
 1. Download the installation script:
