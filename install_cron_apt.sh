@@ -221,7 +221,6 @@ check_root_privileges() {
         log "INFO" "Please run with:"
         echo "  sudo bash $0"
         echo "  or"
-        echo "  curl -fsSL https://raw.githubusercontent.com/$GITHUB_REPO/main/install_cron_apt.sh | sudo bash"
         echo ""
         exit 1
     fi
@@ -1392,7 +1391,7 @@ install_required_packages() {
     fi
 
     # Install packages with better error checking
-    local packages=("needrestart" "mailutils" "logrotate")
+    local packages=("needrestart" "mailutils" "logrotate" "bc")
     local failed_packages=()
 
     for package in "${packages[@]}"; do
